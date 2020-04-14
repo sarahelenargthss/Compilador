@@ -1,0 +1,36 @@
+#Options
+GenerateScanner = true
+GenerateParser = false
+Language = Java
+ScannerName = Lexico
+Package = model
+ScannerCaseSensitive = true
+ScannerTable = Compact
+Input = Stream
+#RegularDefinitions
+letra: [A-Z] | [a-z]
+dig: [0-9]
+dig1: [1-9]
+
+
+// comentários
+comentarioLinha: "/""/" [^\n]*
+comentarioBloco: / \* ( [^\*] | (\*)+[^/\*] )* (\*)+ /
+#Tokens
+// tokens
+
+identificador: {letra} ({letra} | {dig} )* (_ ({letra} | {dig})+ )* (_)?
+cInteira: {dig1} {dig}* | {dig}
+cReal: ({dig1} {dig}* | {dig}) \. ({dig}* {dig1} | {dig})
+cBinaria: # (b | B) (0 | 1)+
+cHexadecimal: # (x | X) ({dig} | [a-f])+
+cString: \" [^ \" \n \\]* \"
+
+
+//caracteres de formatação
+:[\s\t\n]
+
+
+// evita comentários
+:![comentarioLinha]
+:![comentarioBloco]
