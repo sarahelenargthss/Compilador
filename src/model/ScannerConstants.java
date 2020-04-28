@@ -1222,18 +1222,18 @@ public interface ScannerConstants
         "constante hexadecimal inválida",
         "",
         "",
-        "Erro identificando <ignorar>",
+        "comentário de bloco inválido ou não finalizado",
         "",
-        "Erro identificando cReal",
-        "",
-        "",
-        "",
-        "",
-        "comentário de bloco inválido ou não finalizado", // comentário de bloco
+        "constante real inválida",
         "",
         "",
         "",
-        "Erro identificando cReal"
+        "",
+        "comentário de bloco inválido ou não finalizado",
+        "",
+        "",
+        "",
+        "constante real inválida"
     };
 
 }

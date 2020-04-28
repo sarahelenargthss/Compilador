@@ -254,7 +254,13 @@ public class MainFrame extends javax.swing.JFrame {
         Action btnActionCompile = new AbstractAction("compilar [F9]") {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                taMensagens.setText("Compilação de programas ainda não foi implementada!");
+                String entrada = taEditor.getText();
+                String auxEntrada = entrada.replace("\n", "");
+                auxEntrada = auxEntrada.replace("\t", "");
+                auxEntrada = auxEntrada.replace(" ", "");
+                if(auxEntrada.isEmpty()){
+                    taMensagens.setText("Nenhum programa para compilar!");
+                }
             }
         };
 
