@@ -4,18 +4,57 @@ public class Token
 {
     private int id;
     private String lexeme;
-    private int position;
+    private int line;
 
-    public Token(int id, String lexeme, int position)
+    public Token(int id, String lexeme, int line)
     {
         this.id = id;
         this.lexeme = lexeme;
-        this.position = position;
+        this.line = line;
     }
 
-    public final int getId()
+    // retorna por extenso a classe a que o token pertence a partir do id
+    public final String getClasse(boolean adicionarTabulacao)
     {
-        return id;
+        String classe = "";
+        if (id >= 8 && id <= 28)
+            classe = "palavra reservada";
+        else if(id >= 29 && id <= 48)
+            classe = "símbolo especial";
+        else
+            switch (id){
+                case 2:
+                    classe = "identificador";
+                    break;
+                case 3:
+                    classe = "constante inteira";
+                    break;
+                case 4:
+                    classe = "constante real";
+                    break;
+                case 5:
+                    classe = "constante binária";
+                    break;
+                case 6:
+                    classe = "constante hexadecimal";
+                    break;
+                case 7:
+                    classe = "constante string";
+                    break;
+            }
+        
+        if(classe.isEmpty())
+            return "";
+        
+        // opção de adicionar tabulação ao retorno para formatação da mensagem
+        if(adicionarTabulacao)
+        {
+            classe += "\t";
+            if(id == 2 || id == 4)
+                classe += "\t";
+        }
+        
+        return classe;
     }
 
     public final String getLexeme()
@@ -23,13 +62,14 @@ public class Token
         return lexeme;
     }
 
-    public final int getPosition()
+    public final int getLine()
     {
-        return position;
+        return line;
     }
 
     public String toString()
     {
-        return id+" ( "+lexeme+" ) @ "+position;
+        // exemplo de retorno: 1  palavra reservada   main
+        return line + "\t" + getClasse(true) + lexeme;
     };
 }

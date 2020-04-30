@@ -1193,14 +1193,11 @@ public interface ScannerConstants
 
     String[] SCANNER_ERROR =
     {
-        "símbolo inválido",
+        "sÃ­mbolo invÃ¡lido",
         "",
         "",
-        "constante string inválida ou não finalizada",
-        "constante binária ou hexadecimal inválida",
-        "",
-        "",
-        "",
+        "constante string invÃ¡lida ou nÃ£o finalizada",
+        "constante binÃ¡ria ou hexadecimal invÃ¡lida",
         "",
         "",
         "",
@@ -1218,22 +1215,25 @@ public interface ScannerConstants
         "",
         "",
         "",
-        "constante binária inválida",
-        "constante hexadecimal inválida",
-        "",
-        "",
-        "comentário de bloco inválido ou não finalizado",
-        "",
-        "constante real inválida",
         "",
         "",
         "",
+        "constante binÃ¡ria invÃ¡lida",
+        "constante hexadecimal invÃ¡lida",
         "",
-        "comentário de bloco inválido ou não finalizado",
+        "",
+        "comentÃ¡rio de bloco invÃ¡lido ou nÃ£o finalizado",
+        "",
+        "constante real invÃ¡lida",
         "",
         "",
         "",
-        "constante real inválida"
+        "",
+        "comentÃ¡rio de bloco invÃ¡lido ou nÃ£o finalizado",
+        "",
+        "",
+        "",
+        "constante real invÃ¡lida"
     };
 
 }

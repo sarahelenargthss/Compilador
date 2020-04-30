@@ -20,6 +20,9 @@ import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 import javax.swing.event.DocumentListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import model.Lexico;
+import model.Token;
+import model.LexicalError;
 
 /**
  *
@@ -42,6 +45,7 @@ public class MainFrame extends javax.swing.JFrame {
         btnEquipe();
         AjustarToolbar();
         DefineConfiguracoesEditor();
+        taEditor.requestFocus();
     }
 
     private void alterar(boolean possuiAlteracao) {
@@ -255,11 +259,27 @@ public class MainFrame extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 String entrada = taEditor.getText();
+                
+                // remove todos os caracteres de formatação
                 String auxEntrada = entrada.replace("\n", "");
                 auxEntrada = auxEntrada.replace("\t", "");
                 auxEntrada = auxEntrada.replace(" ", "");
+                
                 if(auxEntrada.isEmpty()){
                     taMensagens.setText("Nenhum programa para compilar!");
+                }else{
+                    Lexico lexico = new  Lexico(entrada);
+                    try{
+                        Token token = null;
+                        String saida = "linha\tclasse\t\tlexema\n"; // cabeçalho da lista de tokens
+                        while ( (token = lexico.nextToken()) != null ) {
+                            saida += token.toString() + "\n"; // adiciona o token à lista
+                        }
+                        saida += "\nPrograma compilado com sucesso!";
+                        taMensagens.setText(saida);
+                    }catch(LexicalError e){
+                        taMensagens.setText(e.toString());
+                    }
                 }
             }
         };
@@ -347,7 +367,6 @@ public class MainFrame extends javax.swing.JFrame {
         setFocusCycleRoot(false);
         setIconImages(null);
         setMinimumSize(new java.awt.Dimension(920, 600));
-        setPreferredSize(new java.awt.Dimension(920, 600));
         setSize(new java.awt.Dimension(920, 600));
 
         jPanelToolbar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));

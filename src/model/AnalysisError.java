@@ -2,27 +2,28 @@ package model;
 
 public class AnalysisError extends Exception
 {
-    private int position;
+    private int line;
 
-    public AnalysisError(String msg, int position)
+    public AnalysisError(String msg, int line)
     {
         super(msg);
-        this.position = position;
+        this.line = line;
     }
 
     public AnalysisError(String msg)
     {
         super(msg);
-        this.position = -1;
+        this.line = -1;
     }
 
     public int getPosition()
     {
-        return position;
+        return line;
     }
 
     public String toString()
     {
-        return super.toString() + ", @ "+position;
+        // exemplo de retorno: Erro na linha 1 - $ símbolo inválido
+        return "Erro na linha " + line + " - " + super.getMessage();
     }
 }
