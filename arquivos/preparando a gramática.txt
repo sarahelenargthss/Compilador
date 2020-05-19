@@ -1,0 +1,74 @@
+<programa> ::= <declaracao> main <lista_de_comandos> end ;
+
+// <lista_de_comandos> ::= <comando> ";" | <comando> ";" <lista_de_comandos> ;
+<lista_de_comandos> ::= <comando> ";" <lista_de_comandos1> ;
+<lista_de_comandos1> ::= î | <lista_de_comandos> ;
+
+<comando> ::= <atribuicao> | <entrada> | <saida> | <selecao> | <repeticao> ;
+
+<declaracao> ::= def <declaracao_de_variaveis> | î ;
+
+// <declaracao_de_variaveis> ::= <variavel> | <variavel> <declaracao_de_variaveis> ;
+<declaracao_de_variaveis> ::= <variavel> <declaracao_de_variaveis1> ;
+<declaracao_de_variaveis1> ::= î | <declaracao_de_variaveis> ;
+
+// <variavel> ::= <lista_id> ":" <tipo> ";" | <lista_id> "=" <valor> ";" ;
+<variavel> ::= <lista_id> <variavel1> ;
+<variavel1> ::= ":" <tipo> ";" | "=" <valor> ";" ;
+
+// <lista_id> ::= identificador | identificador "," <lista_id> ;
+<lista_id> ::= identificador <lista_id1> ;
+<lista_id1> ::= î | "," <lista_id> ;
+
+<tipo> ::= int | float | bool | str | bin | hexa ;
+
+<valor> ::= true | false | cInteira | cReal | cBinaria | cHexadecimal | cString ;
+
+<atribuicao> ::= <lista_id> <simbolo_de_atribuicao> <expressao> ;
+
+<simbolo_de_atribuicao> ::= "+=" | "-=" | "=" ;
+
+<entrada> ::= listen "(" <lista_id> ")" ;
+
+<saida> ::= speak "(" <lista_de_expressoes> ")" ;
+
+// <lista_de_expressoes> ::= <expressao> | <expressao> "," <lista_de_expressoes> ;
+<lista_de_expressoes> ::= <expressao> <lista_de_expressoes1> ;
+<lista_de_expressoes1> ::= î | "," <lista_de_expressoes> ;
+
+<selecao> ::= if <verificacao_e_execucao> <elif> <else> end ;
+
+<verificacao_e_execucao> ::= <expressao> ":" <lista_de_comandos> ;
+
+<elif> ::= elif <verificacao_e_execucao> <elif> | î ;
+
+<else> ::= else <lista_de_comandos> | î ;
+
+<repeticao> ::= do <lista_de_comandos> whileFalse ":" <expressao> end ;
+
+// <expressao> ::= <expressao> "&" <elemento> | <expressao> "|" <elemento> | <elemento> ;
+<expressao> ::= <elemento> <expressao1> ;
+<expressao1> ::= "&" <elemento> <expressao> | "|" <elemento> <expressao> | î ;
+
+<elemento> ::= <relacional> | true | false | "!" <elemento> ;
+
+// <relacional> ::= <aritmetica> <operador_relacional> <aritmetica> | <aritmetica> ;
+<relacional> ::= <aritmetica> <relacional1> ;
+<relacional1> ::= <operador_relacional> <aritmetica> | î ;
+
+<operador_relacional> ::= "==" | "!=" | "<" | ">" ;
+
+// <aritmetica> ::= <aritmetica> "+" <termo> | <aritmetica> "-" <termo> | <termo> ;
+<aritmetica> ::= <termo> <aritmetica1> ;
+<aritmetica1> ::= "+" <termo> <aritmetica> | "-" <termo> <aritmetica> | î ;
+
+// <termo> ::= <termo> "*" <fator> | <termo> "/" <fator> | <fator> ;
+<termo> ::= <fator> <termo1> ;
+<termo1> ::= "*" <fator> <termo> | "/" <fator> <termo> | î ;
+
+// <fator> ::= <membro> | <membro> "." toInt | <membro> "." toBin | <membro> "." toHexa ;
+<fator> ::= <membro> <fator1> ;
+<fator1> ::= î | "." <fator2> ;
+<fator2> ::= toInt | toBin | toHexa ;
+
+<membro> ::= identificador | cInteira | cReal | cString | cBinaria | cHexadecimal | "(" <expressao> ")" | "+" <fator> | "-" <fator> ;
