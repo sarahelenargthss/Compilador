@@ -140,91 +140,91 @@ public interface ParserConstants {
 
     String[] PARSER_ERROR = {
         "",
-        "esperado fim de programa",
-        "esperado identificador",
-        "esperado cInteira",
-        "esperado cReal",
-        "esperado cBinaria",
-        "esperado cHexadecimal",
-        "esperado cString",
-        "esperado bin",
-        "esperado bool",
-        "esperado def",
-        "esperado do",
-        "esperado elif",
-        "esperado else",
-        "esperado end",
-        "esperado false",
-        "esperado float",
-        "esperado hexa",
-        "esperado if",
-        "esperado int",
-        "esperado listen",
-        "esperado main",
-        "esperado speak",
-        "esperado str",
-        "esperado toInt",
-        "esperado toBin",
-        "esperado toHexa",
-        "esperado true",
-        "esperado whileFalse",
-        "esperado \"(\"",
-        "esperado \")\"",
-        "esperado \"==\"",
-        "esperado \"!=\"",
-        "esperado \"<\"",
-        "esperado \">\"",
-        "esperado \"&\"",
-        "esperado \"|\"",
-        "esperado \"!\"",
-        "esperado \"+\"",
-        "esperado \"-\"",
-        "esperado \"*\"",
-        "esperado \"/\"",
-        "esperado \",\"",
-        "esperado \".\"",
-        "esperado \";\"",
-        "esperado \":\"",
-        "esperado \"=\"",
-        "esperado \"+=\"",
-        "esperado \"-=\"",
-        "esperado def main",
-        "<lista_de_comandos> inv�lido",
-        "<lista_de_comandos1> inv�lido",
-        "<comando> inv�lido",
-        "esperado def main",
-        "<declaracao_de_variaveis> inv�lido",
-        "<declaracao_de_variaveis1> inv�lido",
-        "<variavel> inv�lido",
-        "<variavel1> inv�lido",
-        "esperado identificador",
-        "esperado ) \",\" : operador de atribuição",
-        "esperado tipo",
-        "esperada uma constante",
-        "<atribuicao> inv�lido",
-        "<simbolo_de_atribuicao> inv�lido",
-        "<entrada> inv�lido",
-        "<saida> inv�lido",
-        "<lista_de_expressoes> inv�lido",
-        "<lista_de_expressoes1> inv�lido",
-        "<selecao> inv�lido",
-        "<verificacao_e_execucao> inv�lido",
-        "<elif> inv�lido",
-        "<else> inv�lido",
-        "<repeticao> inv�lido",
-        "<expressao> inv�lido",
-        "<expressao1> inv�lido",
-        "<elemento> inv�lido",
-        "<relacional> inv�lido",
-        "<relacional1> inv�lido",
-        "<operador_relacional> inv�lido",
-        "<aritmetica> inv�lido",
-        "<aritmetica1> inv�lido",
-        "<termo> inv�lido",
-        "<termo1> inv�lido",
-        "<fator> inv�lido",
-        "<fator1> inv�lido",
-        "<fator2> inv�lido",
-        "<membro> inv�lido"
+        "esperado EOF", // "Era esperado fim de programa"
+        "esperado identificador", // "Era esperado identificador"
+        "esperado cInteira", // "Era esperado cInteira"
+        "esperado cReal", // "Era esperado cReal"
+        "esperado cBinaria", // "Era esperado cBinaria"
+        "esperado cHexadecimal", // "Era esperado cHexadecimal"
+        "esperado cString", // "Era esperado cString"
+        "esperado bin", // "Era esperado bin"
+        "esperado bool", // "Era esperado bool"
+        "esperado def", // "Era esperado def"
+        "esperado do", // "Era esperado do"
+        "esperado elif", // "Era esperado elif"
+        "esperado else", // "Era esperado else"
+        "esperado end", // "Era esperado end"
+        "esperado false", // "Era esperado false"
+        "esperado float", // "Era esperado float"
+        "esperado hexa", // "Era esperado hexa"
+        "esperado if", // "Era esperado if"
+        "esperado int", // "Era esperado int"
+        "esperado listen", // "Era esperado listen"
+        "esperado main", // "Era esperado main"
+        "esperado speak", // "Era esperado speak"
+        "esperado str", // "Era esperado str"
+        "esperado toInt", // "Era esperado toInt"
+        "esperado toBin", // "Era esperado toBin"
+        "esperado toHexa", // "Era esperado toHexa"
+        "esperado true", // "Era esperado true"
+        "esperado whileFalse", // "Era esperado whileFalse"
+        "esperado (", // "Era esperado ("
+        "esperado )", // "Era esperado )"
+        "esperado ==", // "Era esperado =="
+        "esperado !=", // "Era esperado !="
+        "esperado <", // "Era esperado <"
+        "esperado >", // "Era esperado >"
+        "esperado &", // "Era esperado &"
+        "esperado |", // "Era esperado |"
+        "esperado !", // "Era esperado !"
+        "esperado +", // "Era esperado +"
+        "esperado -", // "Era esperado -"
+        "esperado *", // "Era esperado *"
+        "esperado /", // "Era esperado /"
+        "esperado ,", // "Era esperado ,"
+        "esperado .", // "Era esperado ."
+        "esperado ;", // "Era esperado ;"
+        "esperado :", // "Era esperado :"
+        "esperado =", // "Era esperado ="
+        "esperado +=", // "Era esperado +="
+        "esperado -=", // "Era esperado -="
+        "esperado def main", // "<programa> inválido"
+        "esperado identificador do if listen speak", // "<lista_de_comandos> inválido"
+        "esperado identificador do elif else end if listen speak whileFalse", // "<lista_de_comandos1> inválido"
+        "esperado identificador do if listen speak", // "<comando> inválido"
+        "esperado def main", // "<declaracao> inválido"
+        "esperado identificador", // "<declaracao_de_variaveis> inválido"
+        "esperado identificador main", // "<declaracao_de_variaveis1> inválido"
+        "esperado identificador", // "<variavel> inválido"
+        "esperado   :   =", // "<variavel1> inválido"
+        "esperado identificador", // "<lista_id> inválido"
+        "esperado   )   ,   :   operador de atribuição", // "<lista_id1> inválido"
+        "esperado tipo", // "<tipo> inválido"
+        "esperada uma constante", // "<valor> inválido"
+        "esperado identificador", // "<atribuicao> inválido"
+        "esperado operador de atribuição", // "<simbolo_de_atribuicao> inválido"
+        "esperado listen", // "<entrada> inválido"
+        "esperado speak", // "<saida> inválido"
+        "esperada uma expressão", // "<lista_de_expressoes> inválido"
+        "esperado   )   ,", // "<lista_de_expressoes1> inválido"
+        "esperado if", // "<selecao> inválido"
+        "esperada uma expressão", // "<verificacao_e_execucao> inválido"
+        "esperado elif else end", // "<elif> inválido"
+        "esperado else end", // "<else> inválido"
+        "esperado do", // "<repeticao> inválido"
+        "esperada uma expressão", // "<expressao> inválido"
+        "esperada uma expressão", // "<expressao1> inválido"
+        "esperada uma expressão", // "<elemento> inválido"
+        "esperada uma expressão", // "<relacional> inválido"
+        "esperada uma expressão", // "<relacional1> inválido"
+        "esperada uma expressão", // "<operador_relacional> inválido"
+        "esperada uma expressão", // "<aritmetica> inválido"
+        "esperada uma expressão", // "<aritmetica1> inválido"
+        "esperada uma expressão", // "<termo> inválido"
+        "esperada uma expressão", // "<termo1> inválido"
+        "esperada uma expressão", // "<fator> inválido"
+        "esperada uma expressão", // "<fator1> inválido"
+        "esperada uma expressão", // "<fator2> inválido"
+        "esperada uma expressão" // "<membro> inválido"
     };
 }

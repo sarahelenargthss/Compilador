@@ -48,7 +48,8 @@ public class Sintatico implements Constants {
                 }
             } else {
                 if(x > 0){
-                    throw new SyntaticError("encontrado " + currentToken.getLexeme() + " " + PARSER_ERROR[x], currentToken.getLine());
+                    String lexeme = (currentToken.getLexeme().equals("$")) ? "EOF" : currentToken.getLexeme();
+                    throw new SyntaticError("encontrado " + lexeme + " " + PARSER_ERROR[x], currentToken.getLine());
                 }
             }
         } else if (isNonTerminal(x)) {
@@ -56,7 +57,8 @@ public class Sintatico implements Constants {
                 return false;
             } else {
                 if(x > 0){
-                    throw new SyntaticError("encontrado " + currentToken.getLexeme() + " " + PARSER_ERROR[x], currentToken.getLine());
+                    String lexeme = (currentToken.getLexeme().equals("$")) ? "EOF" : currentToken.getLexeme();
+                    throw new SyntaticError("encontrado " + lexeme + " " + PARSER_ERROR[x], currentToken.getLine());
                 }
             }
         } else // isSemanticAction(x)
