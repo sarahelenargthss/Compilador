@@ -48,7 +48,7 @@
 
 // <expressao> ::= <expressao> "&" <elemento> | <expressao> "|" <elemento> | <elemento> ;
 <expressao> ::= <elemento> <expressao1> ;
-<expressao1> ::= "&" <elemento> <expressao> | "|" <elemento> <expressao> | î ;
+<expressao1> ::= "&" <elemento> <expressao1> | "|" <elemento> <expressao1> | î ;
 
 <elemento> ::= <relacional> | true | false | "!" <elemento> ;
 
@@ -60,15 +60,15 @@
 
 // <aritmetica> ::= <aritmetica> "+" <termo> | <aritmetica> "-" <termo> | <termo> ;
 <aritmetica> ::= <termo> <aritmetica1> ;
-<aritmetica1> ::= "+" <termo> <aritmetica> | "-" <termo> <aritmetica> | î ;
+<aritmetica1> ::= "+" <termo> <aritmetica1> | "-" <termo> <aritmetica1> | î ;
 
 // <termo> ::= <termo> "*" <fator> | <termo> "/" <fator> | <fator> ;
 <termo> ::= <fator> <termo1> ;
-<termo1> ::= "*" <fator> <termo> | "/" <fator> <termo> | î ;
+<termo1> ::= "*" <fator> <termo1> | "/" <fator> <termo1> | î ;
 
 // <fator> ::= <membro> | <membro> "." toInt | <membro> "." toBin | <membro> "." toHexa ;
 <fator> ::= <membro> <fator1> ;
 <fator1> ::= î | "." <fator2> ;
 <fator2> ::= toInt | toBin | toHexa ;
 
-<membro> ::= identificador | cInteira | cReal | cString | cBinaria | cHexadecimal | "(" <expressao> ")" | "+" <fator> | "-" <fator> ;
+<membro> ::= identificador | cInteira | cReal | cString | cBinaria | cHexadecimal | "(" <expressao> ")" | "+" <membro> | "-" <membro> ;

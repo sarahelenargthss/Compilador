@@ -1,9 +1,8 @@
 package model;
 
-public interface ScannerConstants
-{
-    int[] SCANNER_TABLE_INDEXES = 
-    {
+public interface ScannerConstants {
+
+    int[] SCANNER_TABLE_INDEXES = {
         0,
         83,
         83,
@@ -48,8 +47,7 @@ public interface ScannerConstants
         1128
     };
 
-    int[][] SCANNER_TABLE = 
-    {
+    int[][] SCANNER_TABLE = {
         {9, 1},
         {10, 1},
         {32, 1},
@@ -1180,19 +1178,15 @@ public interface ScannerConstants
         {57, 37}
     };
 
-    int[] TOKEN_STATE = {-2,  0, 37, -1, -1, 35, 29, 30, 40, 38, 42, 39, 43, 41,  3,  3, 45, 44, 33, 46, 34,  2, 36, 32,  7, -1, -1, 47, 48, -2,  0, -1, 31,  2,  5,  6, -2,  4,  2,  0, -1 };
+    int[] TOKEN_STATE = {-2, 0, 37, -1, -1, 35, 29, 30, 40, 38, 42, 39, 43, 41, 3, 3, 45, 44, 33, 46, 34, 2, 36, 32, 7, -1, -1, 47, 48, -2, 0, -1, 31, 2, 5, 6, -2, 4, 2, 0, -1};
 
-    int[] SPECIAL_CASES_INDEXES =
-        { 0, 0, 0, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21 };
+    int[] SPECIAL_CASES_INDEXES = {0, 0, 0, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21};
 
-    String[] SPECIAL_CASES_KEYS =
-        {  "bin", "bool", "def", "do", "elif", "else", "end", "false", "float", "hexa", "if", "int", "listen", "main", "speak", "str", "toBin", "toHexa", "toInt", "true", "whileFalse" };
+    String[] SPECIAL_CASES_KEYS = {"bin", "bool", "def", "do", "elif", "else", "end", "false", "float", "hexa", "if", "int", "listen", "main", "speak", "str", "toBin", "toHexa", "toInt", "true", "whileFalse"};
 
-    int[] SPECIAL_CASES_VALUES =
-        {  8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 24, 27, 28 };
+    int[] SPECIAL_CASES_VALUES = {8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 24, 27, 28};
 
-    String[] SCANNER_ERROR =
-    {
+    String[] SCANNER_ERROR = {
         "símbolo inválido",
         "",
         "",

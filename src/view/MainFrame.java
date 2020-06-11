@@ -23,6 +23,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import model.Lexico;
 import model.Token;
 import model.LexicalError;
+import model.SemanticError;
+import model.Semantico;
+import model.Sintatico;
+import model.SyntaticError;
 
 /**
  *
@@ -174,8 +178,8 @@ public class MainFrame extends javax.swing.JFrame {
         btnOpen.getActionMap().put("", btnActionOpen);
         btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/icons/open.png")));
     }
-    
-    private void btnSalvar(){
+
+    private void btnSalvar() {
         Action btnActionSave = new AbstractAction("salvar [ctrl + s]") {
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -211,8 +215,8 @@ public class MainFrame extends javax.swing.JFrame {
         btnSave.getActionMap().put("", btnActionSave);
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/icons/save.png")));
     }
-    
-    private void btnCopiar(){
+
+    private void btnCopiar() {
         Action btnActionCopy = new AbstractAction("copiar [ctrl + c]") {
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -225,8 +229,8 @@ public class MainFrame extends javax.swing.JFrame {
         btnCopy.getActionMap().put("", btnActionCopy);
         btnCopy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/icons/copy.png")));
     }
-    
-    private void btnColar(){
+
+    private void btnColar() {
         Action btnActionPaste = new AbstractAction("colar [ctrl + v]") {
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -239,8 +243,8 @@ public class MainFrame extends javax.swing.JFrame {
         btnPaste.getActionMap().put("", btnActionPaste);
         btnPaste.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/icons/paste.png")));
     }
-    
-    private void btnRecortar(){
+
+    private void btnRecortar() {
         Action btnActionCut = new AbstractAction("recortar [ctrl + x]") {
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -253,31 +257,29 @@ public class MainFrame extends javax.swing.JFrame {
         btnCut.getActionMap().put("", btnActionCut);
         btnCut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/icons/cut.png")));
     }
-    
-    private void btnCompilar(){
+
+    private void btnCompilar() {
         Action btnActionCompile = new AbstractAction("compilar [F9]") {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 String entrada = taEditor.getText();
-                
+
                 // remove todos os caracteres de formatação
                 String auxEntrada = entrada.replace("\n", "");
                 auxEntrada = auxEntrada.replace("\t", "");
                 auxEntrada = auxEntrada.replace(" ", "");
-                
-                if(auxEntrada.isEmpty()){
+
+                if (auxEntrada.isEmpty()) {
                     taMensagens.setText("Nenhum programa para compilar!");
-                }else{
-                    Lexico lexico = new  Lexico(entrada);
-                    try{
-                        Token token = null;
-                        String saida = "linha\tclasse\t\tlexema\n"; // cabeçalho da lista de tokens
-                        while ( (token = lexico.nextToken()) != null ) {
-                            saida += token.toString() + "\n"; // adiciona o token à lista
-                        }
-                        saida += "\nPrograma compilado com sucesso!";
-                        taMensagens.setText(saida);
-                    }catch(LexicalError e){
+                } else {
+                    Lexico lexico = new Lexico(entrada);
+                    Sintatico sintatico = new Sintatico();
+                    Semantico semantico = new Semantico();
+
+                    try {
+                        sintatico.parse(lexico, semantico);
+                        taMensagens.setText("Programa compilado com sucesso!");
+                    } catch (LexicalError | SyntaticError | SemanticError e) {
                         taMensagens.setText(e.toString());
                     }
                 }
@@ -289,8 +291,8 @@ public class MainFrame extends javax.swing.JFrame {
         btnCompile.getActionMap().put("", btnActionCompile);
         btnCompile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/icons/compile.png")));
     }
-    
-    private void btnEquipe(){
+
+    private void btnEquipe() {
         Action btnActionTeam = new AbstractAction("equipe [F1]") {
             @Override
             public void actionPerformed(ActionEvent evt) {

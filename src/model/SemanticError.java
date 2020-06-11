@@ -1,14 +1,12 @@
 package model;
 
-public class SemanticError extends AnalysisError
-{
-    public SemanticError(String msg, int position)
-	 {
+public class SemanticError extends AnalysisError {
+
+    public SemanticError(String msg, int position) {
         super(msg, position);
     }
 
-    public SemanticError(String msg)
-    {
+    public SemanticError(String msg) {
         super(msg);
     }
 }
