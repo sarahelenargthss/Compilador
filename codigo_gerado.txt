@@ -1,0 +1,17 @@
+.assembly extern mscorlib {}
+.assembly _codigo_objeto{}
+.module   _codigo_objeto.exe
+
+.class public _UNICA {
+	.method static public void _principal() {
+		.entrypoint
+		ldc.i8 22
+		conv.r8
+		ldc.i8 13
+		conv.r8
+		add
+		conv.i8
+		call void [mscorlib]System.Console::Write(int64)
+		ret
+	}
+}

@@ -20,8 +20,8 @@ import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 import javax.swing.event.DocumentListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import model.GeraArquivo;
 import model.Lexico;
-import model.Token;
 import model.LexicalError;
 import model.SemanticError;
 import model.Semantico;
@@ -278,9 +278,13 @@ public class MainFrame extends javax.swing.JFrame {
 
                     try {
                         sintatico.parse(lexico, semantico);
+                        
+                        GeraArquivo.gerarArquivo(lblArquivo.getText(), semantico.getCodigoGerado());
                         taMensagens.setText("Programa compilado com sucesso!");
                     } catch (LexicalError | SyntaticError | SemanticError e) {
                         taMensagens.setText(e.toString());
+                    } catch (FileNotFoundException e) {
+                        taMensagens.setText("Erro ao gerar arquivo de código! (" + e.getMessage() + ")");
                     }
                 }
             }

@@ -126,7 +126,7 @@ whileFalse = identificador: "whileFalse"
 <fator2>
 <membro>
 #Grammar
-<programa> ::= <declaracao> main <lista_de_comandos> end ;
+<programa> ::= #15 <declaracao> main <lista_de_comandos> end #16 ;
 
 // <lista_de_comandos> ::= <comando> ";" | <comando> ";" <lista_de_comandos> ;
 <lista_de_comandos> ::= <comando> ";" <lista_de_comandos1> ;
@@ -161,7 +161,7 @@ whileFalse = identificador: "whileFalse"
 <saida> ::= speak "(" <lista_de_expressoes> ")" ;
 
 // <lista_de_expressoes> ::= <expressao> | <expressao> "," <lista_de_expressoes> ;
-<lista_de_expressoes> ::= <expressao> <lista_de_expressoes1> ;
+<lista_de_expressoes> ::= <expressao> #14 <lista_de_expressoes1> ;
 <lista_de_expressoes1> ::= î | "," <lista_de_expressoes> ;
 
 <selecao> ::= if <verificacao_e_execucao> <elif> <else> end ;
@@ -188,15 +188,15 @@ whileFalse = identificador: "whileFalse"
 
 // <aritmetica> ::= <aritmetica> "+" <termo> | <aritmetica> "-" <termo> | <termo> ;
 <aritmetica> ::= <termo> <aritmetica1> ;
-<aritmetica1> ::= "+" <termo> <aritmetica1> | "-" <termo> <aritmetica1> | î ;
+<aritmetica1> ::= "+" <termo> #1 <aritmetica1> | "-" <termo> #2 <aritmetica1> | î ;
 
 // <termo> ::= <termo> "*" <fator> | <termo> "/" <fator> | <fator> ;
 <termo> ::= <fator> <termo1> ;
-<termo1> ::= "*" <fator> <termo1> | "/" <fator> <termo1> | î ;
+<termo1> ::= "*" <fator> #3 <termo1> | "/" <fator> #4 <termo1> | î ;
 
 // <fator> ::= <membro> | <membro> "." toInt | <membro> "." toBin | <membro> "." toHexa ;
 <fator> ::= <membro> <fator1> ;
 <fator1> ::= î | "." <fator2> ;
 <fator2> ::= toInt | toBin | toHexa ;
 
-<membro> ::= identificador | cInteira | cReal | cString | cBinaria | cHexadecimal | "(" <expressao> ")" | "+" <membro> | "-" <membro> ;
+<membro> ::= identificador | cInteira #5 | cReal #6 | cString | cBinaria | cHexadecimal | "(" <expressao> ")" | "+" <membro> | "-" <membro> ;
