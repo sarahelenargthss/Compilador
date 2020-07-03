@@ -1,11 +1,11 @@
 package model;
 
-import java.util.ArrayList;
+import java.util.Stack;
 
 public class Semantico implements Constants {
 
     private String codigoGerado = "";
-    private ArrayList<TIPO> tipos = new ArrayList<>();
+    private Stack<TIPO> tipos = new Stack<>();
     private int tabulacao = 0;
 
     public String getCodigoGerado() {
@@ -15,7 +15,9 @@ public class Semantico implements Constants {
     public void executeAction(int action, Token token) throws SemanticError {
         switch (action) {
             case 01:
-                action01();
+                if (!action01()) {
+                    throw new SemanticError("tipos incompatíveis em expressão aritmética", token.getLine());
+                }
                 break;
             case 05:
                 action05(token);
@@ -31,42 +33,40 @@ public class Semantico implements Constants {
                 break;
         }
     }
-    
-    private void adicionaLinha(String linha){
-        for (int i = 0; i < tabulacao; i++){
+
+    private void adicionaLinha(String linha) {
+        for (int i = 0; i < tabulacao; i++) {
             codigoGerado += "\t";
         }
         codigoGerado += linha + "\n";
     }
 
-    private void action01() {
-        TIPO tipo1 = tipos.remove(tipos.size() - 1);
-        TIPO tipo2 = tipos.remove(tipos.size() - 1);
-        if (tipo1 == TIPO.float64 || tipo2 == TIPO.float64) {
-            tipos.add(TIPO.float64);
+    private boolean action01() {
+        TIPO tipo1 = tipos.pop();
+        TIPO tipo2 = tipos.pop();
+        if (tipo1 == tipo2) {
+            tipos.push(tipo2);
+        } else if ((tipo1 == TIPO.float64 && tipo2 == TIPO.int64)
+                || (tipo1 == TIPO.int64 && tipo2 == TIPO.float64)) {
+            tipos.push(TIPO.float64);
         } else {
-            tipos.add(TIPO.int64);
+            return false;
         }
-//        codigoGerado += "add\n";
         adicionaLinha("add");
+        return true;
     }
 
     private void action05(Token token) {
-        tipos.add(TIPO.int64);
-//        codigoGerado += "ldc.i8 " + token.getLexeme();
-//        codigoGerado += "\nconv.r8\n";
-        
+        tipos.push(TIPO.int64);
         adicionaLinha("ldc.i8 " + token.getLexeme());
         adicionaLinha("conv.r8");
     }
 
     private void action14() {
-        TIPO tipo = tipos.remove(tipos.size() - 1);
-        if (tipo == TIPO.int64){
-//            codigoGerado += "conv.i8\n";
+        TIPO tipo = tipos.pop();
+        if (tipo == TIPO.int64) {
             adicionaLinha("conv.i8");
         }
-//        codigoGerado += "call void [mscorlib]System.Console::Write(" + tipo.toString() + ")\n";
         adicionaLinha("call void [mscorlib]System.Console::Write(" + tipo.toString() + ")");
     }
 

@@ -176,13 +176,13 @@ whileFalse = identificador: "whileFalse"
 
 // <expressao> ::= <expressao> "&" <elemento> | <expressao> "|" <elemento> | <elemento> ;
 <expressao> ::= <elemento> <expressao1> ;
-<expressao1> ::= "&" <elemento> <expressao1> | "|" <elemento> <expressao1> | î ;
+<expressao1> ::= "&" <elemento> #17 <expressao1> | "|" <elemento> #18 <expressao1> | î ;
 
-<elemento> ::= <relacional> | true | false | "!" <elemento> ;
+<elemento> ::= <relacional> | true #11 | false #12 | "!" <elemento> #13 ;
 
 // <relacional> ::= <aritmetica> <operador_relacional> <aritmetica> | <aritmetica> ;
 <relacional> ::= <aritmetica> <relacional1> ;
-<relacional1> ::= <operador_relacional> <aritmetica> | î ;
+<relacional1> ::= <operador_relacional> #9 <aritmetica> #10 | î ;
 
 <operador_relacional> ::= "==" | "!=" | "<" | ">" ;
 
@@ -197,6 +197,6 @@ whileFalse = identificador: "whileFalse"
 // <fator> ::= <membro> | <membro> "." toInt | <membro> "." toBin | <membro> "." toHexa ;
 <fator> ::= <membro> <fator1> ;
 <fator1> ::= î | "." <fator2> ;
-<fator2> ::= toInt | toBin | toHexa ;
+<fator2> ::= toInt #22 | toBin #23 | toHexa #24 ;
 
-<membro> ::= identificador | cInteira #5 | cReal #6 | cString | cBinaria | cHexadecimal | "(" <expressao> ")" | "+" <membro> | "-" <membro> ;
+<membro> ::= identificador | cInteira #5 | cReal #6 | cString #19 | cBinaria #20 | cHexadecimal #21 | "(" <expressao> ")" | "+" <membro> #7 | "-" <membro> #8 ;
