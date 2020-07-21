@@ -177,8 +177,9 @@ public class Semantico implements Constants {
         }
         codigoGerado += linha + "\n";
         if (salvarLinhas) {
-            if(!linhas.isEmpty())
+            if (!linhas.isEmpty()) {
                 linhas += "\n";
+            }
             linhas += linha;
         }
     }
@@ -609,40 +610,84 @@ public class Semantico implements Constants {
     }
 
     private int action37() {
-        salvarLinhas = true;
-        String valor = valorvar.getLexeme();
         TIPO tipo = null;
-        switch(valorvar.getId()){
-                case 3: // t_cInteira
-                    tipo = TIPO.int64;
-                    break;
-                case 4: // t_cReal
-                    tipo = TIPO.float64;
-                    break;
-                case 5: // t_cBinaria
-                    tipo = TIPO.bin;
-                    break;
-                case 6: // t_cHexadecimal
-                    tipo = TIPO.hexa;
-                    break;
-                case 7: // t_cString
-                    tipo = TIPO.string;
-                    break;
-                case 15: // t_false
-                case 27: // t_true
-                    tipo = TIPO.bool;
+        switch (valorvar.getId()) {
+            case 3: // t_cInteira
+                tipo = TIPO.int64;
+                break;
+            case 4: // t_cReal
+                tipo = TIPO.float64;
+                break;
+            case 5: // t_cBinaria
+                tipo = TIPO.bin;
+                break;
+            case 6: // t_cHexadecimal
+                tipo = TIPO.hexa;
+                break;
+            case 7: // t_cString
+                tipo = TIPO.string;
+                break;
+            case 15: // t_false
+            case 27: // t_true
+                tipo = TIPO.bool;
         }
-        salvarLinhas = false;
+        String locals = ".locals(";
+        boolean primeiro = true;
         for (String id : listaid) {
             if (ts.containsKey(id)) {
                 return 1;
             }
             ts.put(id, tipo);
-            
-            //fazer o passo 2
-            
-            adicionaLinha("stloc " + id);
+
+            if (primeiro) {
+                primeiro = false;
+            } else {
+                locals += ", ";
+            }
+            if (tipo == TIPO.bin || tipo == TIPO.hexa) {
+                locals += TIPO.int64.toString();
+            } else {
+                locals += tipo.toString();
+            }
+
+            locals += " " + id;
         }
+        locals += ")";
+        adicionaLinha(locals);
+
+        switch (valorvar.getId()) {
+            case 3: // t_cInteira
+                adicionaLinha("ldc.i8 " + valorvar.getLexeme());
+                break;
+            case 4: // t_cReal
+                adicionaLinha("ldc.r8 " + valorvar.getLexeme());
+                break;
+            case 5: // t_cBinaria
+                adicionaLinha("ldstr \"" + valorvar.getLexeme().replace("#b", "") + "\"");
+                adicionaLinha("ldc.i4 2");
+                adicionaLinha("call int64 [mscorlib]System.Convert::ToInt64(string, int32)");
+                break;
+            case 6: // t_cHexadecimal
+                adicionaLinha("ldstr \"" + valorvar.getLexeme().replace("#x", "") + "\"");
+                adicionaLinha("ldc.i4 16");
+                adicionaLinha("call int64 [mscorlib]System.Convert::ToInt64(string, int32)");
+                break;
+            case 7: // t_cString
+                adicionaLinha("ldstr \"" + valorvar.getLexeme() + "\"");
+                break;
+            case 15: // t_false
+                adicionaLinha("ldc.i4.0");
+                break;
+            case 27: // t_true
+                adicionaLinha("ldc.i4.");
+        }
+
+        for (int i = 0; i < listaid.size() - 1; i++) { // não itera o último elemento
+            adicionaLinha("dup");
+            adicionaLinha("stloc " + listaid.elementAt(i));
+        }
+        adicionaLinha("stloc " + listaid.elementAt(listaid.size() - 1));
+
         listaid.clear();
         return 0;
     }
