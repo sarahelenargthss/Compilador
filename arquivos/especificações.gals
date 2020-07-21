@@ -107,6 +107,7 @@ whileFalse = identificador: "whileFalse"
 <lista_de_expressoes1>
 <selecao>
 <verificacao_e_execucao>
+<verificacao_e_execucao1>
 <elif>
 <else>
 <repeticao>
@@ -142,21 +143,21 @@ whileFalse = identificador: "whileFalse"
 
 // <variavel> ::= <lista_id> ":" <tipo> ";" | <lista_id> "=" <valor> ";" ;
 <variavel> ::= <lista_id> <variavel1> ;
-<variavel1> ::= ":" <tipo> ";" | "=" <valor> ";" ;
+<variavel1> ::= ":" <tipo> #30 #31 ";" | "=" <valor> #36 #37 ";" ;
 
 // <lista_id> ::= identificador | identificador "," <lista_id> ;
-<lista_id> ::= identificador <lista_id1> ;
+<lista_id> ::= identificador #32 <lista_id1> ;
 <lista_id1> ::= î | "," <lista_id> ;
 
 <tipo> ::= int | float | bool | str | bin | hexa ;
 
 <valor> ::= true | false | cInteira | cReal | cBinaria | cHexadecimal | cString ;
 
-<atribuicao> ::= <lista_id> <simbolo_de_atribuicao> <expressao> ;
+<atribuicao> ::= <lista_id> <simbolo_de_atribuicao> #38 <expressao> #34 ;
 
 <simbolo_de_atribuicao> ::= "+=" | "-=" | "=" ;
 
-<entrada> ::= listen "(" <lista_id> ")" ;
+<entrada> ::= listen "(" <lista_id> #35 ")" ;
 
 <saida> ::= speak "(" <lista_de_expressoes> ")" ;
 
@@ -164,15 +165,16 @@ whileFalse = identificador: "whileFalse"
 <lista_de_expressoes> ::= <expressao> #14 <lista_de_expressoes1> ;
 <lista_de_expressoes1> ::= î | "," <lista_de_expressoes> ;
 
-<selecao> ::= if <verificacao_e_execucao> <elif> <else> end ;
+<selecao> ::= if <verificacao_e_execucao> <elif> <else> end #40 ;
 
-<verificacao_e_execucao> ::= <expressao> ":" <lista_de_comandos> ;
+<verificacao_e_execucao> ::= <expressao> #39 ":" <lista_de_comandos> ;
+<verificacao_e_execucao1> ::= <expressao> #42 ":" <lista_de_comandos> ;
 
-<elif> ::= elif <verificacao_e_execucao> <elif> | î ;
+<elif> ::= #41 elif <verificacao_e_execucao1> <elif> | î ;
 
-<else> ::= else <lista_de_comandos> | î ;
+<else> ::= #43 else ":" <lista_de_comandos> | î ;
 
-<repeticao> ::= do <lista_de_comandos> whileFalse ":" <expressao> end ;
+<repeticao> ::= #44 do <lista_de_comandos> whileFalse ":" <expressao> #45 end ;
 
 // <expressao> ::= <expressao> "&" <elemento> | <expressao> "|" <elemento> | <elemento> ;
 <expressao> ::= <elemento> <expressao1> ;
@@ -199,4 +201,4 @@ whileFalse = identificador: "whileFalse"
 <fator1> ::= î | "." <fator2> ;
 <fator2> ::= toInt #22 | toBin #23 | toHexa #24 ;
 
-<membro> ::= identificador | cInteira #5 | cReal #6 | cString #19 | cBinaria #20 | cHexadecimal #21 | "(" <expressao> ")" | "+" <membro> #7 | "-" <membro> #8 ;
+<membro> ::= identificador #33 | cInteira #5 | cReal #6 | cString #19 | cBinaria #20 | cHexadecimal #21 | "(" <expressao> ")" | "+" <membro> #7 | "-" <membro> #8 ;

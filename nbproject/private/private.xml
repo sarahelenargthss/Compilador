@@ -6,6 +6,8 @@
             <file>file:/C:/Users/sarah/Documents/NetBeansProjects/Compilador/src/model/TIPO.java</file>
             <file>file:/C:/Users/sarah/Documents/NetBeansProjects/Compilador/src/view/MainFrame.java</file>
             <file>file:/C:/Users/sarah/Documents/NetBeansProjects/Compilador/src/model/Semantico.java</file>
+            <file>file:/C:/Users/sarah/Documents/NetBeansProjects/Compilador/src/model/Sintatico.java</file>
+            <file>file:/C:/Users/sarah/Documents/NetBeansProjects/Compilador/src/model/SemanticError.java</file>
             <file>file:/C:/Users/sarah/Documents/NetBeansProjects/Compilador/src/model/GeraArquivo.java</file>
         </group>
     </open-files>

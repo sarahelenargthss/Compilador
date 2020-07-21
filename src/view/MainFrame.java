@@ -272,19 +272,22 @@ public class MainFrame extends javax.swing.JFrame {
                 if (auxEntrada.isEmpty()) {
                     taMensagens.setText("Nenhum programa para compilar!");
                 } else {
-                    Lexico lexico = new Lexico(entrada);
-                    Sintatico sintatico = new Sintatico();
-                    Semantico semantico = new Semantico();
+                    if (lblArquivo.getText().isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Salve o programa-fonte para compilá-lo!", "Erro", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        Lexico lexico = new Lexico(entrada);
+                        Sintatico sintatico = new Sintatico();
+                        Semantico semantico = new Semantico();
 
-                    try {
-                        sintatico.parse(lexico, semantico);
-                        
-                        GeraArquivo.gerarArquivo(lblArquivo.getText(), semantico.getCodigoGerado());
-                        taMensagens.setText("Programa compilado com sucesso!");
-                    } catch (LexicalError | SyntaticError | SemanticError e) {
-                        taMensagens.setText(e.toString());
-                    } catch (FileNotFoundException e) {
-                        taMensagens.setText("Erro ao gerar arquivo de código! (" + e.getMessage() + ")");
+                        try {
+                            sintatico.parse(lexico, semantico);
+                            GeraArquivo.gerarArquivo(lblArquivo.getText(), semantico.getCodigoGerado());
+                            taMensagens.setText("Programa compilado com sucesso!");
+                        } catch (LexicalError | SyntaticError | SemanticError e) {
+                            taMensagens.setText(e.toString());
+                        } catch (FileNotFoundException e) {
+                            taMensagens.setText("Erro ao gerar arquivo de código! (" + e.getMessage() + ")");
+                        }
                     }
                 }
             }

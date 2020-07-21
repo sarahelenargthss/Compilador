@@ -5,7 +5,7 @@ public interface ParserConstants
     int START_SYMBOL = 49;
 
     int FIRST_NON_TERMINAL    = 49;
-    int FIRST_SEMANTIC_ACTION = 87;
+    int FIRST_SEMANTIC_ACTION = 88;
 
     int[][] PARSER_TABLE =
     {
@@ -30,28 +30,29 @@ public interface ParserConstants
         { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 40, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 41, -1, -1, -1, -1, -1, -1 },
         { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 42, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
         { -1, 43, 43, 43, 43, 43, 43, -1, -1, -1, -1, -1, -1, -1, 43, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 43, -1, 43, -1, -1, -1, -1, -1, -1, -1, 43, 43, 43, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-        { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 44, 45, 45, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-        { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 46, 47, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-        { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 48, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-        { -1, 49, 49, 49, 49, 49, 49, -1, -1, -1, -1, -1, -1, -1, 49, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 49, -1, 49, -1, -1, -1, -1, -1, -1, -1, 49, 49, 49, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-        { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 52, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 52, -1, -1, -1, -1, 50, 51, -1, -1, -1, -1, -1, 52, -1, 52, 52, -1, -1, -1 },
-        { -1, 53, 53, 53, 53, 53, 53, -1, -1, -1, -1, -1, -1, -1, 55, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 54, -1, 53, -1, -1, -1, -1, -1, -1, -1, 56, 53, 53, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-        { -1, 57, 57, 57, 57, 57, 57, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 57, -1, -1, -1, -1, -1, -1, -1, -1, 57, 57, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-        { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 59, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 59, 58, 58, 58, 58, 59, 59, -1, -1, -1, -1, -1, 59, -1, 59, 59, -1, -1, -1 },
-        { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 60, 61, 62, 63, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-        { -1, 64, 64, 64, 64, 64, 64, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 64, -1, -1, -1, -1, -1, -1, -1, -1, 64, 64, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-        { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 67, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 67, 67, 67, 67, 67, 67, 67, -1, 65, 66, -1, -1, 67, -1, 67, 67, -1, -1, -1 },
-        { -1, 68, 68, 68, 68, 68, 68, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 68, -1, -1, -1, -1, -1, -1, -1, -1, 68, 68, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-        { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 71, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 71, 71, 71, 71, 71, 71, 71, -1, 71, 71, 69, 70, 71, -1, 71, 71, -1, -1, -1 },
-        { -1, 72, 72, 72, 72, 72, 72, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 72, -1, -1, -1, -1, -1, -1, -1, -1, 72, 72, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-        { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 73, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 73, 73, 73, 73, 73, 73, 73, -1, 73, 73, 73, 73, 73, 74, 73, 73, -1, -1, -1 },
-        { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 75, 76, 77, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
-        { -1, 78, 79, 80, 82, 83, 81, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 84, -1, -1, -1, -1, -1, -1, -1, -1, 85, 86, -1, -1, -1, -1, -1, -1, -1, -1, -1 }
+        { -1, 44, 44, 44, 44, 44, 44, -1, -1, -1, -1, -1, -1, -1, 44, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 44, -1, 44, -1, -1, -1, -1, -1, -1, -1, 44, 44, 44, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+        { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 45, 46, 46, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+        { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 47, 48, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+        { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 49, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+        { -1, 50, 50, 50, 50, 50, 50, -1, -1, -1, -1, -1, -1, -1, 50, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 50, -1, 50, -1, -1, -1, -1, -1, -1, -1, 50, 50, 50, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+        { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 53, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 53, -1, -1, -1, -1, 51, 52, -1, -1, -1, -1, -1, 53, -1, 53, 53, -1, -1, -1 },
+        { -1, 54, 54, 54, 54, 54, 54, -1, -1, -1, -1, -1, -1, -1, 56, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 55, -1, 54, -1, -1, -1, -1, -1, -1, -1, 57, 54, 54, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+        { -1, 58, 58, 58, 58, 58, 58, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 58, -1, -1, -1, -1, -1, -1, -1, -1, 58, 58, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+        { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 60, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 60, 59, 59, 59, 59, 60, 60, -1, -1, -1, -1, -1, 60, -1, 60, 60, -1, -1, -1 },
+        { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 61, 62, 63, 64, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+        { -1, 65, 65, 65, 65, 65, 65, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 65, -1, -1, -1, -1, -1, -1, -1, -1, 65, 65, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+        { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 68, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 68, 68, 68, 68, 68, 68, 68, -1, 66, 67, -1, -1, 68, -1, 68, 68, -1, -1, -1 },
+        { -1, 69, 69, 69, 69, 69, 69, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 69, -1, -1, -1, -1, -1, -1, -1, -1, 69, 69, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+        { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 72, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 72, 72, 72, 72, 72, 72, 72, -1, 72, 72, 70, 71, 72, -1, 72, 72, -1, -1, -1 },
+        { -1, 73, 73, 73, 73, 73, 73, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 73, -1, -1, -1, -1, -1, -1, -1, -1, 73, 73, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+        { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 74, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 74, 74, 74, 74, 74, 74, 74, -1, 74, 74, 74, 74, 74, 75, 74, 74, -1, -1, -1 },
+        { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 76, 77, 78, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+        { -1, 79, 80, 81, 83, 84, 82, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 85, -1, -1, -1, -1, -1, -1, -1, -1, 86, 87, -1, -1, -1, -1, -1, -1, -1, -1, -1 }
     };
 
     int[][] PRODUCTIONS = 
     {
-        { 102,  53,  21,  50,  14, 103 },
+        { 103,  53,  21,  50,  14, 104 },
         {  52,  44,  51 },
         {   0 },
         {  50 },
@@ -59,16 +60,16 @@ public interface ParserConstants
         {  64 },
         {  65 },
         {  68 },
-        {  72 },
+        {  73 },
         {  10,  54 },
         {   0 },
         {  56,  55 },
         {   0 },
         {  54 },
         {  58,  57 },
-        {  45,  60,  44 },
-        {  46,  61,  44 },
-        {   2,  59 },
+        {  45,  60, 118, 119,  44 },
+        {  46,  61, 124, 125,  44 },
+        {   2, 120,  59 },
         {   0 },
         {  42,  58 },
         {  19 },
@@ -84,150 +85,152 @@ public interface ParserConstants
         {   5 },
         {   6 },
         {   7 },
-        {  58,  63,  73 },
+        {  58,  63, 126,  74, 122 },
         {  47 },
         {  48 },
         {  46 },
-        {  20,  29,  58,  30 },
+        {  20,  29,  58, 123,  30 },
         {  22,  29,  66,  30 },
-        {  73, 101,  67 },
+        {  74, 102,  67 },
         {   0 },
         {  42,  66 },
-        {  18,  69,  70,  71,  14 },
-        {  73,  45,  50 },
-        {  12,  69,  70 },
+        {  18,  69,  71,  72,  14, 128 },
+        {  74, 127,  45,  50 },
+        {  74, 130,  45,  50 },
+        { 129,  12,  70,  71 },
         {   0 },
-        {  13,  50 },
+        { 131,  13,  45,  50 },
         {   0 },
-        {  11,  50,  28,  45,  73,  14 },
-        {  75,  74 },
-        {  35,  75, 104,  74 },
-        {  36,  75, 105,  74 },
+        { 132,  11,  50,  28,  45,  74, 133,  14 },
+        {  76,  75 },
+        {  35,  76, 105,  75 },
+        {  36,  76, 106,  75 },
         {   0 },
-        {  76 },
-        {  27,  98 },
-        {  15,  99 },
-        {  37,  75, 100 },
-        {  79,  77 },
-        {  78,  96,  79,  97 },
+        {  77 },
+        {  27,  99 },
+        {  15, 100 },
+        {  37,  76, 101 },
+        {  80,  78 },
+        {  79,  97,  80,  98 },
         {   0 },
         {  31 },
         {  32 },
         {  33 },
         {  34 },
-        {  81,  80 },
-        {  38,  81,  88,  80 },
-        {  39,  81,  89,  80 },
+        {  82,  81 },
+        {  38,  82,  89,  81 },
+        {  39,  82,  90,  81 },
         {   0 },
-        {  83,  82 },
-        {  40,  83,  90,  82 },
-        {  41,  83,  91,  82 },
+        {  84,  83 },
+        {  40,  84,  91,  83 },
+        {  41,  84,  92,  83 },
         {   0 },
-        {  86,  84 },
+        {  87,  85 },
         {   0 },
-        {  43,  85 },
-        {  24, 109 },
-        {  25, 110 },
-        {  26, 111 },
-        {   2 },
-        {   3,  92 },
-        {   4,  93 },
-        {   7, 106 },
-        {   5, 107 },
-        {   6, 108 },
-        {  29,  73,  30 },
-        {  38,  86,  94 },
-        {  39,  86,  95 }
+        {  43,  86 },
+        {  24, 110 },
+        {  25, 111 },
+        {  26, 112 },
+        {   2, 121 },
+        {   3,  93 },
+        {   4,  94 },
+        {   7, 107 },
+        {   5, 108 },
+        {   6, 109 },
+        {  29,  74,  30 },
+        {  38,  87,  95 },
+        {  39,  87,  96 }
     };
 
     String[] PARSER_ERROR =
     {
         "",
-        "Era esperado fim de programa",
-        "Era esperado identificador",
-        "Era esperado cInteira",
-        "Era esperado cReal",
-        "Era esperado cBinaria",
-        "Era esperado cHexadecimal",
-        "Era esperado cString",
-        "Era esperado bin",
-        "Era esperado bool",
-        "Era esperado def",
-        "Era esperado do",
-        "Era esperado elif",
-        "Era esperado else",
-        "Era esperado end",
-        "Era esperado false",
-        "Era esperado float",
-        "Era esperado hexa",
-        "Era esperado if",
-        "Era esperado int",
-        "Era esperado listen",
-        "Era esperado main",
-        "Era esperado speak",
-        "Era esperado str",
-        "Era esperado toInt",
-        "Era esperado toBin",
-        "Era esperado toHexa",
-        "Era esperado true",
-        "Era esperado whileFalse",
-        "Era esperado \"(\"",
-        "Era esperado \")\"",
-        "Era esperado \"==\"",
-        "Era esperado \"!=\"",
-        "Era esperado \"<\"",
-        "Era esperado \">\"",
-        "Era esperado \"&\"",
-        "Era esperado \"|\"",
-        "Era esperado \"!\"",
-        "Era esperado \"+\"",
-        "Era esperado \"-\"",
-        "Era esperado \"*\"",
-        "Era esperado \"/\"",
-        "Era esperado \",\"",
-        "Era esperado \".\"",
-        "Era esperado \";\"",
-        "Era esperado \":\"",
-        "Era esperado \"=\"",
-        "Era esperado \"+=\"",
-        "Era esperado \"-=\"",
-        "<programa> inválido",
-        "<lista_de_comandos> inválido",
-        "<lista_de_comandos1> inválido",
-        "<comando> inválido",
-        "<declaracao> inválido",
-        "<declaracao_de_variaveis> inválido",
-        "<declaracao_de_variaveis1> inválido",
-        "<variavel> inválido",
-        "<variavel1> inválido",
-        "<lista_id> inválido",
-        "<lista_id1> inválido",
-        "<tipo> inválido",
-        "<valor> inválido",
-        "<atribuicao> inválido",
-        "<simbolo_de_atribuicao> inválido",
-        "<entrada> inválido",
-        "<saida> inválido",
-        "<lista_de_expressoes> inválido",
-        "<lista_de_expressoes1> inválido",
-        "<selecao> inválido",
-        "<verificacao_e_execucao> inválido",
-        "<elif> inválido",
-        "<else> inválido",
-        "<repeticao> inválido",
-        "<expressao> inválido",
-        "<expressao1> inválido",
-        "<elemento> inválido",
-        "<relacional> inválido",
-        "<relacional1> inválido",
-        "<operador_relacional> inválido",
-        "<aritmetica> inválido",
-        "<aritmetica1> inválido",
-        "<termo> inválido",
-        "<termo1> inválido",
-        "<fator> inválido",
-        "<fator1> inválido",
-        "<fator2> inválido",
-        "<membro> inválido"
+        "esperado EOF", // "Era esperado fim de programa"
+        "esperado identificador", // "Era esperado identificador"
+        "esperado cInteira", // "Era esperado cInteira"
+        "esperado cReal", // "Era esperado cReal"
+        "esperado cBinaria", // "Era esperado cBinaria"
+        "esperado cHexadecimal", // "Era esperado cHexadecimal"
+        "esperado cString", // "Era esperado cString"
+        "esperado bin", // "Era esperado bin"
+        "esperado bool", // "Era esperado bool"
+        "esperado def", // "Era esperado def"
+        "esperado do", // "Era esperado do"
+        "esperado elif", // "Era esperado elif"
+        "esperado else", // "Era esperado else"
+        "esperado end", // "Era esperado end"
+        "esperado false", // "Era esperado false"
+        "esperado float", // "Era esperado float"
+        "esperado hexa", // "Era esperado hexa"
+        "esperado if", // "Era esperado if"
+        "esperado int", // "Era esperado int"
+        "esperado listen", // "Era esperado listen"
+        "esperado main", // "Era esperado main"
+        "esperado speak", // "Era esperado speak"
+        "esperado str", // "Era esperado str"
+        "esperado toInt", // "Era esperado toInt"
+        "esperado toBin", // "Era esperado toBin"
+        "esperado toHexa", // "Era esperado toHexa"
+        "esperado true", // "Era esperado true"
+        "esperado whileFalse", // "Era esperado whileFalse"
+        "esperado (", // "Era esperado ("
+        "esperado )", // "Era esperado )"
+        "esperado ==", // "Era esperado =="
+        "esperado !=", // "Era esperado !="
+        "esperado <", // "Era esperado <"
+        "esperado >", // "Era esperado >"
+        "esperado &", // "Era esperado &"
+        "esperado |", // "Era esperado |"
+        "esperado !", // "Era esperado !"
+        "esperado +", // "Era esperado +"
+        "esperado -", // "Era esperado -"
+        "esperado *", // "Era esperado *"
+        "esperado /", // "Era esperado /"
+        "esperado ,", // "Era esperado ,"
+        "esperado .", // "Era esperado ."
+        "esperado ;", // "Era esperado ;"
+        "esperado :", // "Era esperado :"
+        "esperado =", // "Era esperado ="
+        "esperado +=", // "Era esperado +="
+        "esperado -=", // "Era esperado -="
+        "esperado def main", // "<programa> inválido"
+        "esperado identificador do if listen speak", // "<lista_de_comandos> inválido"
+        "esperado identificador do elif else end if listen speak whileFalse", // "<lista_de_comandos1> inválido"
+        "esperado identificador do if listen speak", // "<comando> inválido"
+        "esperado def main", // "<declaracao> inválido"
+        "esperado identificador", // "<declaracao_de_variaveis> inválido"
+        "esperado identificador main", // "<declaracao_de_variaveis1> inválido"
+        "esperado identificador", // "<variavel> inválido"
+        "esperado   :   =", // "<variavel1> inválido"
+        "esperado identificador", // "<lista_id> inválido"
+        "esperado   )   ,   :   operador de atribuição", // "<lista_id1> inválido"
+        "esperado tipo", // "<tipo> inválido"
+        "esperada uma constante", // "<valor> inválido"
+        "esperado identificador", // "<atribuicao> inválido"
+        "esperado operador de atribuição", // "<simbolo_de_atribuicao> inválido"
+        "esperado listen", // "<entrada> inválido"
+        "esperado speak", // "<saida> inválido"
+        "esperada uma expressão", // "<lista_de_expressoes> inválido"
+        "esperado   )   ,", // "<lista_de_expressoes1> inválido"
+        "esperado if", // "<selecao> inválido"
+        "esperada uma expressão", // "<verificacao_e_execucao> inválido"
+        "esperada uma expressão", // "<verificacao_e_execucao1> inválido",
+        "esperado elif else end", // "<elif> inválido"
+        "esperado else end", // "<else> inválido"
+        "esperado do", // "<repeticao> inválido"
+        "esperada uma expressão", // "<expressao> inválido"
+        "esperada uma expressão", // "<expressao1> inválido"
+        "esperada uma expressão", // "<elemento> inválido"
+        "esperada uma expressão", // "<relacional> inválido"
+        "esperada uma expressão", // "<relacional1> inválido"
+        "esperada uma expressão", // "<operador_relacional> inválido"
+        "esperada uma expressão", // "<aritmetica> inválido"
+        "esperada uma expressão", // "<aritmetica1> inválido"
+        "esperada uma expressão", // "<termo> inválido"
+        "esperada uma expressão", // "<termo1> inválido"
+        "esperada uma expressão", // "<fator> inválido"
+        "esperada uma expressão", // "<fator1> inválido"
+        "esperada uma expressão", // "<fator2> inválido"
+        "esperada uma expressão" // "<membro> inválido"
     };
 }
