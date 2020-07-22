@@ -1,5 +1,5 @@
 entra na pasta
 
-C:\Windows\Microsoft.NET\Framework64\v4.0.30319\ilasm.exe codigo_gerado.txt
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\ilasm.exe t08.il
 
 codigo_gerado.exe

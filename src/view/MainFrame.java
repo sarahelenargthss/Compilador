@@ -162,7 +162,7 @@ public class MainFrame extends javax.swing.JFrame {
                         LimparTela();
                         lblArquivo.setText(file.getAbsolutePath());
                         while (reader.hasNext()) {
-                            taEditor.append(reader.nextLine() + System.lineSeparator());
+                            taEditor.append(reader.nextLine() + "\n");
                         }
                         alterar(false);
                     } catch (FileNotFoundException ex) {
@@ -272,7 +272,7 @@ public class MainFrame extends javax.swing.JFrame {
                 if (auxEntrada.isEmpty()) {
                     taMensagens.setText("Nenhum programa para compilar!");
                 } else {
-                    if (lblArquivo.getText().isEmpty()) {
+                    if (lblArquivo.getText().isEmpty() || possuiAlteracao) {
                         JOptionPane.showMessageDialog(null, "Salve o programa-fonte para compilá-lo!", "Erro", JOptionPane.ERROR_MESSAGE);
                     } else {
                         Lexico lexico = new Lexico(entrada);

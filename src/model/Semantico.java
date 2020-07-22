@@ -5,10 +5,13 @@ import java.util.Stack;
 
 public class Semantico implements Constants {
 
-    private String codigoGerado = "";
-    private Stack<TIPO> pilha = new Stack<>();
-    private HashMap<String, TIPO> ts = new HashMap();
-    private Stack<String> listaid = new Stack<>();
+    private String codigo = "";
+    private Stack<TIPO> pilha;
+    private HashMap<String, TIPO> ts;
+    private Stack<String> lista_id;
+    private Stack<If> ifs;
+    private Stack<String> do_whiles;
+    private int id_rotulo = 1;
     private TIPO tipovar = null;
     private Token valorvar = null;
     private String operador_relacional = "";
@@ -18,8 +21,16 @@ public class Semantico implements Constants {
     private boolean salvarLinhas = false;
     private String linhas = "";
 
+    public Semantico() {
+        this.do_whiles = new Stack<>();
+        this.pilha = new Stack<>();
+        this.ts = new HashMap();
+        this.lista_id = new Stack<>();
+        this.ifs = new Stack<>();
+    }
+
     public String getCodigoGerado() {
-        return codigoGerado;
+        return codigo;
     }
 
     public void executeAction(int action, Token token) throws SemanticError {
@@ -155,31 +166,49 @@ public class Semantico implements Constants {
                 action36(token);
                 break;
             case 37:
-                switch (action37()) {
-                    case 1:
-                        throw new SemanticError("identificador já declarado");
-                    case 2:
-                        throw new SemanticError("tipo incompatível em operação de atribuição");
+                if (!action37()) {
+                    throw new SemanticError("identificador já declarado");
                 }
                 break;
             case 38:
                 action38(token);
                 break;
+            case 39:
+                action39();
+                break;
+            case 40:
+                action40();
+                break;
+            case 41:
+                action41();
+                break;
+            case 42:
+                action42();
+                break;
+            case 43:
+                action43();
+                break;
+            case 44:
+                action44();
+                break;
+            case 45:
+                action45();
+                break;
         }
     }
 
     private void adicionaLinha(String linha) {
+        if (salvarLinhas && !linhas.isEmpty()) {
+            linhas += "\n";
+        }
         for (int i = 0; i < tabulacao; i++) {
-            codigoGerado += "\t";
+            codigo += "\t";
             if (salvarLinhas) {
                 linhas += "\t";
             }
         }
-        codigoGerado += linha + "\n";
+        codigo += linha + "\n";
         if (salvarLinhas) {
-            if (!linhas.isEmpty()) {
-                linhas += "\n";
-            }
             linhas += linha;
         }
     }
@@ -379,17 +408,17 @@ public class Semantico implements Constants {
     }
 
     private void action15() {
-        codigoGerado += ".assembly extern mscorlib {}\n"
+        codigo += ".assembly extern mscorlib {}\n"
                 + ".assembly _codigo_objeto{}\n"
                 + ".module   _codigo_objeto.exe\n\n"
-                + ".class public _UNICA {\n"
+                + ".class public _UNICA {\n\n"
                 + "\t.method static public void _principal() {\n"
-                + "\t\t.entrypoint\n";
+                + "\t\t.entrypoint\n\n";
         tabulacao += 2;
     }
 
     private void action16() {
-        codigoGerado += "\t\tret\n"
+        codigo += "\n\t\tret\n"
                 + "\t}\n"
                 + "}\n";
     }
@@ -420,7 +449,7 @@ public class Semantico implements Constants {
 
     private void action19(Token token) {
         pilha.push(TIPO.string);
-        adicionaLinha("ldstr \"" + token.getLexeme() + "\"");
+        adicionaLinha("ldstr " + token.getLexeme());
     }
 
     private void action20(Token token) {
@@ -494,7 +523,7 @@ public class Semantico implements Constants {
     }
 
     private boolean action31() {
-        for (String id : listaid) {
+        for (String id : lista_id) {
             if (ts.containsKey(id)) {
                 return false;
             }
@@ -505,12 +534,12 @@ public class Semantico implements Constants {
             }
             adicionaLinha(".locals(" + tipovar.toString() + " " + id + ")");
         }
-        listaid.clear();
+        lista_id.clear();
         return true;
     }
 
     private void action32(Token token) {
-        listaid.push(token.getLexeme());
+        lista_id.push(token.getLexeme());
     }
 
     private boolean action33(Token token) {
@@ -530,13 +559,12 @@ public class Semantico implements Constants {
     private int action34() {
         if (salvarLinhas) {
             salvarLinhas = false;
-            int i = linhas.lastIndexOf("\n");
             linhas = linhas.substring(0, linhas.lastIndexOf("\n"));
         }
         boolean primeiro = true;
         TIPO tipoexp = pilha.pop();
-        for (int i = listaid.size() - 1; i >= 0; i--) {
-            String id = listaid.elementAt(i);
+        for (int i = lista_id.size() - 1; i >= 0; i--) {
+            String id = lista_id.elementAt(i);
 
             if (!ts.containsKey(id)) {
                 return 1;
@@ -563,7 +591,7 @@ public class Semantico implements Constants {
             }
             adicionaLinha("stloc " + id);
         }
-        listaid.clear();
+        lista_id.clear();
         if (!linhas.isEmpty()) {
             linhas = "";
         }
@@ -571,7 +599,7 @@ public class Semantico implements Constants {
     }
 
     private boolean action35() {
-        for (String id : listaid) {
+        for (String id : lista_id) {
             if (!ts.containsKey(id)) {
                 return false;
             }
@@ -601,7 +629,7 @@ public class Semantico implements Constants {
             }
             adicionaLinha("stloc " + id);
         }
-        listaid.clear();
+        lista_id.clear();
         return true;
     }
 
@@ -609,7 +637,7 @@ public class Semantico implements Constants {
         valorvar = token;
     }
 
-    private int action37() {
+    private boolean action37() {
         TIPO tipo = null;
         switch (valorvar.getId()) {
             case 3: // t_cInteira
@@ -633,9 +661,9 @@ public class Semantico implements Constants {
         }
         String locals = ".locals(";
         boolean primeiro = true;
-        for (String id : listaid) {
+        for (String id : lista_id) {
             if (ts.containsKey(id)) {
-                return 1;
+                return false;
             }
             ts.put(id, tipo);
 
@@ -682,25 +710,21 @@ public class Semantico implements Constants {
                 adicionaLinha("ldc.i4.");
         }
 
-        for (int i = 0; i < listaid.size() - 1; i++) { // não itera o último elemento
+        for (int i = 0; i < lista_id.size() - 1; i++) { // não itera o último elemento
             adicionaLinha("dup");
-            adicionaLinha("stloc " + listaid.elementAt(i));
+            adicionaLinha("stloc " + lista_id.elementAt(i));
         }
-        adicionaLinha("stloc " + listaid.elementAt(listaid.size() - 1));
+        adicionaLinha("stloc " + lista_id.elementAt(lista_id.size() - 1));
 
-        listaid.clear();
-        return 0;
+        lista_id.clear();
+        return true;
     }
 
     private void action38(Token token) {
         operador_atribuicao = token.getLexeme();
 
-        if (listaid.size() > 1) {
-            salvarLinhas = true;
-        }
-
         if (!operador_atribuicao.equals("=")) {
-            for (String id : listaid) {
+            for (String id : lista_id) {
                 adicionaLinha("ldloc " + id);
                 if (ts.containsKey(id)) {
                     if (ts.get(id) == TIPO.int64) {
@@ -709,5 +733,89 @@ public class Semantico implements Constants {
                 } // else: o erro de identificador não declarado será gerado na ção #34
             }
         }
+
+        if (lista_id.size() > 1) {
+            salvarLinhas = true;
+        }
+    }
+
+    private void action39() {
+        If novoIf = new If();
+        novoIf.addRotulo("r" + id_rotulo);
+        ifs.push(novoIf);
+
+        adicionaLinha("brfalse r" + id_rotulo++);
+    }
+
+    private void action40() {
+        If ifAtual = ifs.pop();
+
+        String rotulo = ifAtual.pollRotulo();
+        int tab = tabulacao;
+        tabulacao = 0;
+        while (rotulo != null) {
+            adicionaLinha(rotulo + ":");
+            rotulo = ifAtual.pollRotulo();
+        }
+        if (ifAtual.temFinal()) {
+            adicionaLinha(ifAtual.getRotuloFinal() + ":");
+        }
+        tabulacao = tab;
+    }
+
+    private void action41() {
+        If ifAtual = ifs.peek();
+
+        if (!ifAtual.temFinal()) {
+            ifAtual.setRotuloFinal("r" + id_rotulo++);
+        }
+        adicionaLinha("br " + ifAtual.getRotuloFinal());
+
+        int tab = tabulacao;
+        tabulacao = 0;
+        adicionaLinha(ifAtual.pollRotulo() + ":");
+        tabulacao = tab;
+
+        ifs.set(ifs.size() - 1, ifAtual);
+    }
+
+    private void action42() {
+        If ifAtual = ifs.peek();
+
+        ifAtual.addRotulo("r" + id_rotulo);
+        adicionaLinha("brfalse r" + id_rotulo++);
+
+        ifs.set(ifs.size() - 1, ifAtual);
+    }
+
+    private void action43() {
+        If ifAtual = ifs.peek();
+
+        if (!ifAtual.temFinal()) {
+            ifAtual.setRotuloFinal("r" + id_rotulo++);
+        }
+        adicionaLinha("br " + ifAtual.getRotuloFinal());
+
+        int tab = tabulacao;
+        tabulacao = 0;
+        adicionaLinha(ifAtual.pollRotulo() + ":");
+        tabulacao = tab;
+
+        ifs.set(ifs.size() - 1, ifAtual);
+
+    }
+
+    private void action44() {
+        do_whiles.push("r" + id_rotulo);
+
+        int tab = tabulacao;
+        tabulacao = 0;
+        adicionaLinha("r" + id_rotulo++ + ":");
+        tabulacao = tab;
+    }
+
+    private void action45() {
+        String rotulo = do_whiles.pop();
+        adicionaLinha("brfalse " + rotulo);
     }
 }
